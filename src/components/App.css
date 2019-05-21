@@ -1,0 +1,11 @@
+html, body, .app{
+    height: 100vh;
+    background: #eee;
+    padding: 1em;
+}
+.img-center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
