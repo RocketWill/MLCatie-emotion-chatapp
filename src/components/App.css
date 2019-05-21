@@ -1,11 +1,26 @@
+@font-face {font-family: 'noto';
+    src: url('http://at.alicdn.com/t/webfont_wbmvfbjl14.eot'); /* IE9*/
+    src: url('http://at.alicdn.com/t/webfont_wbmvfbjl14.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('http://at.alicdn.com/t/webfont_wbmvfbjl14.woff') format('woff'), /* chrome、firefox */
+    url('http://at.alicdn.com/t/webfont_wbmvfbjl14.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('http://at.alicdn.com/t/webfont_wbmvfbjl14.svg#思源黑体-极细') format('svg'); /* iOS 4.1- */
+  }
 html, body, .app{
     height: 100vh;
     background: #eee;
     padding: 1em;
+}
+.header{
+    font-family: 'noto' !important;
+    font-weight: 300 !important;
 }
 .img-center{
     display: block;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
+}
+
+.blue{
+    background-color: #164C72 !important;
 }
