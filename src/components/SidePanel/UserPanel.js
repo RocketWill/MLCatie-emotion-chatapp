@@ -3,6 +3,7 @@ import { Grid, Header, Icon, Dropdown, Image } from 'semantic-ui-react';
 import firebase from '../../firebase';
 import { auth } from 'firebase';
 import { connect } from 'react-redux';
+import textLogo from '../../static/images/logo_alt.png';
 
 class UserPanel extends React.Component {
     state = {
@@ -41,8 +42,9 @@ class UserPanel extends React.Component {
                     <Grid.Row style={{padding: '1.2em', margin: 0}}>
                         {/* App Header */}
                         <Header inverted floated="left" as="h3">
-                            <Icon name="code" />
-                            <Header.Content>喵喵机器喵</Header.Content>
+                            {/* <Icon name="code" /> */}
+                            <Image src={textLogo} style={{width: 300}} />
+                            {/* <Header.Content>喵喵机器喵</Header.Content> */}
                         </Header>
                         {/* User Dropdown */}
                     <Header style={{padding: '0.25em'}} as="h4" inverted>
