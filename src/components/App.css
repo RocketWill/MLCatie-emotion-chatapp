@@ -22,6 +22,11 @@ html, body, .app{
     cursor: pointer;
 }
 
+/* SidePanel.js */
+.menu {
+    padding-bottom: 2em;
+}
+
 /* Messages */
 .messages {
     height: 62vh;

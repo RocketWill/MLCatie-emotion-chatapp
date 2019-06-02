@@ -4,3 +4,4 @@ export const CLEAR_USER = "CLEAR_USER";
 
 // Channel Action Type
 export const SET_CURRENT_CAHNNEL = "SET_CURRENT_CAHNNEL";
+export const SET_PRIVATE_CHANNEL = "SET_PRIVATE_CHANNEL";
