@@ -17,7 +17,7 @@ class FileModal extends React.Component {
         }
     }
 
-    sendFile = () =>{
+    sendFile = () => {
         const {file} = this.state;
         const {uploadFile, closeModal} = this.props;
         if (file !== null){

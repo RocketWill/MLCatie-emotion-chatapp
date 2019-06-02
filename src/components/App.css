@@ -4,9 +4,7 @@ html, body, .app{
     background: #eee;
     padding: 1em;
 }
-.header{
-    font-weight: 300 !important;
-}
+
 .img-center{
     display: block;
     margin-left: auto;
