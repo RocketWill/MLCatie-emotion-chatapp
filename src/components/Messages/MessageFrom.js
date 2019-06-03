@@ -12,6 +12,7 @@ class MessageForm extends React.Component {
         this.compositionStatus = true;
         this.state = {
             storageRef: firebase.storage().ref(),
+            typingRef: firebase.database().ref('typing'),
             uploadState: '',
             uploadTask: null,
             message: "",
@@ -57,6 +58,22 @@ class MessageForm extends React.Component {
         this.sendApi(msg);
         
         
+    }
+    
+    handleKeyDown = () => {
+        const {message, typingRef, channel, user} = this.state;
+
+        if (message) {
+            typingRef
+                .child(channel.id)
+                .child(user.uid)
+                .set(user.displayName);
+        } else {
+            typingRef
+                .child(channel.id)
+                .child(user.uid)
+                .remove();
+        }
     }
 
     sendApi = (msg) => {
@@ -130,7 +147,7 @@ class MessageForm extends React.Component {
 
     sendMessage = () => {
         const {getMessagesRef} = this.props;
-        const {message, channel} = this.state;
+        const {message, channel, typingRef, user} = this.state;
 
         if (message){
             this.setState({loading: false});
@@ -141,6 +158,10 @@ class MessageForm extends React.Component {
                 .then(() => {
                     this.setState({loading: false, message: "", errors:[]});
                     console.log("msg sent");
+                    typingRef
+                        .child(channel.id)
+                        .child(user.uid)
+                        .remove()
                 })
                 .catch(err => {
                     console.error(err);
@@ -245,6 +266,7 @@ class MessageForm extends React.Component {
                 <Input 
                     fluid
                     name="message"
+                    onKeyDown={this.handleKeyDown}
                     value={message}
                     style={{marginBottom: '0.7rem'}}
                     label={<Button icon="add" />}
