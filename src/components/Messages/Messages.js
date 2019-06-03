@@ -7,6 +7,7 @@ import Message from './Message';
 import { connect } from 'react-redux';
 import { setUserPosts } from '../../actions/index';
 import Typing from './Typing';
+import Skeleton from './Skeleton';
 
 class Messages extends React.Component {
     state = {
@@ -35,6 +36,16 @@ class Messages extends React.Component {
             this.addListeners(channel.id);
             this.addUserStarsListener(channel.id, user.uid)
         }
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if (this.messageEnd){
+            this.scrollToBottom({behavior: 'smooth'});
+        }
+    }
+
+    scrollToBottom = () => {
+        this.messageEnd.scrollIntoView();
     }
 
     addListeners = (channelId) => {
@@ -222,8 +233,18 @@ class Messages extends React.Component {
         ))
     )
 
+    displayMessagesSkeleton = loading => (
+        loading ? (
+            <React.Fragment>
+                {[...Array(10)].map((_, i) => (
+                    <Skeleton key={i} />
+                ))}
+            </React.Fragment>
+        ) : null
+    )
+
     render(){
-        const {messagesRef, messages, channel, user, progressBar, numUniqueUsers, searchTerm, searchResults, searchLoading, privateChannel, isChannelStarred, typingUsers} = this.state;
+        const {messagesRef, messages, channel, user, progressBar, numUniqueUsers, searchTerm, searchResults, searchLoading, privateChannel, isChannelStarred, typingUsers, messagesLoading} = this.state;
         return(
             <React.Fragment>
                 <MessagesHeader
@@ -238,9 +259,11 @@ class Messages extends React.Component {
 
                 <Segment>
                     <Comment.Group className={progressBar ? 'messages__progress' : 'messages' }>
+                        {this.displayMessagesSkeleton(messagesLoading)}
                         {/* Messages */}
                         {searchTerm ? this.displayMessages(searchResults) : this.displayMessages(messages)}
                         {this.displayTypingUsers(typingUsers)}
+                        <div ref={node => (this.messageEnd = node)}></div>
                     </Comment.Group>
                 </Segment>
 
