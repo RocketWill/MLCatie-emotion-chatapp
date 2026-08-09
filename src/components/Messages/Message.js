@@ -22,7 +22,7 @@ const Message = ({message, user}) => (
                 <Image src={message.image} className="message__image" /> : 
                 <React.Fragment>
                     <Comment.Text>{message.content}</Comment.Text>
-                    {message.emotionProb != 0 && message.emotionProb && <Comment.Content>{message.emotionEmoji} <span className="message__emotion">{message.emotionProb}%</span></Comment.Content>}
+                    {message.emotionProb !== 0 && message.emotionProb && <Comment.Content>{message.emotionEmoji} <span className="message__emotion">{message.emotionProb}%</span></Comment.Content>}
                 </React.Fragment>
                 
                 
@@ -32,4 +32,3 @@ const Message = ({message, user}) => (
 );
 
 export default Message;
-

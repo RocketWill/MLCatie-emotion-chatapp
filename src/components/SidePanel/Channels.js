@@ -196,7 +196,7 @@ class Channels extends React.Component {
     }
 
     render(){
-        const {channels, modal, channel} = this.state;
+        const {channels, modal} = this.state;
 
         return(
             <React.Fragment>

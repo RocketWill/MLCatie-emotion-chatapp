@@ -1,5 +1,5 @@
 import React from 'react';
-import {Grid, Form, Segment, Button, Header, Message, Icon, Image} from 'semantic-ui-react';
+import {Grid, Form, Segment, Button, Header, Message, Image} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
 import logo from '../../static/images/logo.png';
 import firebase from '../../firebase';
@@ -51,7 +51,7 @@ class Login extends React.Component {
     }
 
     render(){
-        const {username, email, password, passwordComfirmation, errors, loading} = this.state;
+        const {email, password, errors, loading} = this.state;
         return (
             <Grid textAlign="center" verticalAlign="middle" className='app'>
                 <Grid.Column style={{maxWidth: 450}}>

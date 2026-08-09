@@ -1,5 +1,5 @@
 import React from 'react';
-import {Menu, Label, Icon} from 'semantic-ui-react';
+import {Menu, Icon} from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import { setCurrentChannel, setPrivateChannel } from '../../actions';
 import firebase from '../../firebase';

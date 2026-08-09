@@ -1,8 +1,6 @@
 import React from 'react';
-import { Grid, Header, Icon, Dropdown, Image } from 'semantic-ui-react';
+import { Grid, Header, Dropdown, Image } from 'semantic-ui-react';
 import firebase from '../../firebase';
-import { auth } from 'firebase';
-import { connect } from 'react-redux';
 import textLogo from '../../static/images/logo_alt.png';
 
 class UserPanel extends React.Component {
@@ -63,14 +61,6 @@ class UserPanel extends React.Component {
             </Grid>
         )
     }
-}
-
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser
-})
-
-const mapDispatchToProps = {
-  
 }
 
 export default UserPanel;

@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Grid, Message} from 'semantic-ui-react';
+import React from 'react';
+import {Grid} from 'semantic-ui-react';
 import "./App.css";
 import ColorPanel from './ColorPanel/ColorPanel';
 import SidePanel from './SidePanel/SidePanel';
@@ -47,9 +47,5 @@ const mapStateToProps = (state) => ({
   primaryColor: state.colors.primaryColor,
   secondaryColor: state.colors.secondaryColor,
 })
-
-const mapDispatchToProps = {
-  
-}
 
 export default connect(mapStateToProps)(App);
