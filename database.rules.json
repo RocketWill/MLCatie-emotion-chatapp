@@ -1,0 +1,86 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "channels": {
+      ".read": "auth != null",
+      "$channelId": {
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['id', 'name', 'createdBy', 'details'])",
+        "id": {
+          ".validate": "newData.val() === $channelId"
+        },
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 80"
+        },
+        "details": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 500"
+        }
+      }
+    },
+    "messages": {
+      "$channelId": {
+        ".read": "auth != null",
+        "$messageId": {
+          ".write": "auth != null && newData.child('user/id').val() === auth.uid && root.child('channels/' + $channelId).exists()",
+          ".validate": "(newData.hasChildren(['content', 'user', 'timestamp']) && !newData.hasChild('image')) || (newData.hasChildren(['image', 'user', 'timestamp']) && !newData.hasChild('content'))",
+          "content": {
+            ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 5000"
+          },
+          "image": {
+            ".validate": "newData.isString() && newData.val().length > 0"
+          },
+          "user": {
+            ".validate": "newData.hasChildren(['id', 'name', 'avatar']) && newData.child('id').val() === auth.uid"
+          }
+        }
+      }
+    },
+    "privateMessages": {
+      "$uid1": {
+        "$uid2": {
+          ".read": "auth != null && ($uid1 === auth.uid || $uid2 === auth.uid)",
+          "$messageId": {
+            ".write": "auth != null && ($uid1 === auth.uid || $uid2 === auth.uid) && newData.child('user/id').val() === auth.uid",
+            ".validate": "(newData.hasChildren(['content', 'user', 'timestamp']) && !newData.hasChild('image')) || (newData.hasChildren(['image', 'user', 'timestamp']) && !newData.hasChild('content'))",
+            "content": {
+              ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 5000"
+            },
+            "image": {
+              ".validate": "newData.isString() && newData.val().length > 0"
+            },
+            "user": {
+              ".validate": "newData.hasChildren(['id', 'name', 'avatar']) && newData.child('id').val() === auth.uid"
+            }
+          }
+        }
+      }
+    },
+    "presence": {
+      ".read": "auth != null",
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid"
+      }
+    },
+    "typing": {
+      "$channelId": {
+        ".read": "auth != null",
+        "$uid": {
+          ".write": "auth != null && auth.uid === $uid"
+        }
+      }
+    },
+    "users": {
+      ".read": "auth != null",
+      "$uid": {
+        ".write": "auth != null && auth.uid === $uid",
+        "name": {
+          ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 80"
+        },
+        "avatar": {
+          ".validate": "newData.isString() && newData.val().length > 0"
+        }
+      }
+    }
+  }
+}
