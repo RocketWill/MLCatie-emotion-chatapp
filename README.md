@@ -28,15 +28,7 @@ The hosted chat application is still available at [mlcatie-emotion-chatapp.fireb
 
 ## System overview
 
-```mermaid
-flowchart LR
-    U["Browser"] --> R["React client"]
-    R --> A["Firebase Authentication"]
-    R <--> D["Firebase Realtime Database"]
-    R <--> S["Firebase Storage"]
-    R --> API["Sentiment API"]
-    API --> M["jieba + Word2Vec + LSTM"]
-```
+![MLCatie system overview](docs/architecture/system-overview.svg)
 
 The client and model service are kept in separate repositories:
 
