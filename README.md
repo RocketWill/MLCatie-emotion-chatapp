@@ -4,6 +4,12 @@ MLCatie is a real-time chat application that combines channel-based messaging wi
 
 The hosted chat application is still available at [mlcatie-emotion-chatapp.firebaseapp.com](https://mlcatie-emotion-chatapp.firebaseapp.com/). The original hosted sentiment endpoint has been retired, so chat data remains available while live sentiment inference is being restored through the companion API.
 
+## Project origin and recognition
+
+MLCatie was developed as a team project in the 2019 Machine Learning course at Peking University's School of Software and Microelectronics. Under the Ministry of Education–Microsoft Industry-University Cooperative Education Program, the team was rated **Outstanding Team (优秀团队)** on 17 June 2019.
+
+This was a collective course-project honor rather than a placing in an external Microsoft competition. Will Cheng's contributions covered the sentiment model, Flask API, React/Firebase chat interface, and realtime presentation of emotion scores.
+
 ## Application preview
 
 ![MLCatie application overview](docs/images/application-overview.png)
